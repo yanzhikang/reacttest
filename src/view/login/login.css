@@ -1,0 +1,11 @@
+.loginContain{
+    width: 600px;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    padding-top: 24px;
+    position: relative;
+    left: 50%;
+    top: 100px;
+    /* top: 50%; */
+    transform: translateX(-50%)
+}
