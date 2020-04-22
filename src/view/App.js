@@ -13,20 +13,16 @@ function App() {
             <Test02></Test02> */}
             <h1>App</h1>
             {/* 把 <a> 变成 <Link> */}
-            <ul>
+            {/* <ul>
                 <li>
                     <Link to="/about">About</Link>
                 </li>
                 <li>
                     <Link to="/inbox">Inbox</Link>
                 </li>
-            </ul>
+            </ul> */}
 
-            {/*
-          接着用 `this.props.children` 替换 `<Child>`
-          router 会帮我们找到这个 children
-        */}
-            {this.props.children}
+            {/* {this.props.children} */}
         </div>
     );
 }
