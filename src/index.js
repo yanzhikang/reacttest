@@ -6,7 +6,7 @@ import About from "./view/routertest/about";
 import List from "./view/routertest/list";
 import Inbox from "./view/routertest/inbox";
 
-import { Router, Route, Link, BrowserRouter } from "react-router-dom";
+import { Route, Link, BrowserRouter, Switch,Redirect } from "react-router-dom";
 
 import { Provider } from "react-redux";
 import store from "./store/index.js";
@@ -20,38 +20,31 @@ import store from "./store/index.js";
 //     document.getElementById("root")
 // );
 function App() {
-    return (
-        <div>
-            <h1>App</h1>
-            <ul>
-                <li>
-                    <Link to="/about">About</Link>
-                </li>
-                <li>
-                    <Link to="/inbox">Inbox</Link>
-                </li>
-            </ul>
-            {/* {this.props.children} */}
-        </div>
-    );
+	return (
+		<div>
+			<h1>App</h1>
+			<ul>
+				<li>
+					<Link to="/about">About</Link>
+				</li>
+				<li>
+					<Link to="/inbox">Inbox</Link>
+				</li>
+			</ul>
+		</div>
+	);
 }
-// ReactDOM.render(
-//     <Router>
-//         <Route path="/" component={App}>
-//             <Route path="about" component={About} />
-//             <Route path="inbox" component={Inbox} />
-//         </Route>
-//     </Router>,
-//     document.getElementById("root")
-// );
 
 ReactDOM.render(
-    <BrowserRouter>
-        <div>
-                <Route path="/" exact component={App}></Route>
-                <Route path="/about" exact component={About}></Route>
-                <Route path="/inbox" exact component={Inbox}></Route>
-        </div>
-    </BrowserRouter>,
-    document.getElementById("root")
+	<BrowserRouter>
+		<Switch>
+			<Route path="/" exact component={App}>
+                <Redirect to='/about' />
+            </Route>
+			<Route path="/about" exact component={About}></Route>
+			<Route path="/inbox" exact component={Inbox}></Route>
+			<Route path="/list" exact component={List}></Route>
+		</Switch>
+	</BrowserRouter>,
+	document.getElementById("root")
 );
