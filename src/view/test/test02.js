@@ -4,8 +4,10 @@ import {
 	setPageTitle,
 	setInfoList,
 	setTestdataAdd,
-	setTestdataReduce,
+    setTestdataReduce,
+    setAxiosdata
 } from "../../store/action";
+import axios from "axios";
 
 class Test02 extends Component {
 	constructor(props) {
@@ -19,13 +21,25 @@ class Test02 extends Component {
 		console.log("add");
 		this.props.setTestdataAdd();
 	};
+	myClick = () => {
+		console.log("myclick");
+		this.props.setTestdataBymyclick();
+	};
+	axiosTest = () => {
+		console.log("axiosTest");
+		this.props.setAxiosdata();
+	};
 	render() {
-		let { pageTitle, infoList, testdata } = this.props;
+		let { pageTitle, infoList, testdata ,axiosTest} = this.props;
 		return (
 			<div>
 				<button onClick={this.reduce}>-1</button>
 				{testdata}
 				<button onClick={this.add}>+1</button>
+				<br></br>
+				MY NAME IS {axiosTest}!
+				<button onClick={this.myClick}>click</button>
+				<button onClick={this.axiosTest}>axios_test</button>
 			</div>
 		);
 	}
@@ -35,6 +49,7 @@ const mapStateToProps = (state) => {
 		pageTitle: state.pageTitle,
 		infoList: state.infoList,
 		testdata: state.testdata,
+		axiosTest: state.axiosTest,
 	};
 };
 
@@ -42,20 +57,19 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
 	return {
 		setPageTitle(data) {
-			// 如果不懂这里的逻辑可查看前面对redux-thunk的介绍
 			dispatch(setPageTitle(data));
-			// 执行setPageTitle会返回一个函数
-			// 这正是redux-thunk的所用之处:异步action
-			// 上行代码相当于
-			/*dispatch((dispatch, getState) => {
-              dispatch({ type: 'SET_PAGE_TITLE', data: data })
-          )*/
 		},
 		setInfoList(data) {
 			dispatch(setInfoList(data));
 		},
 		setTestdataReduce: (data) => dispatch(setTestdataReduce(data)),
 		setTestdataAdd: (data) => dispatch(setTestdataAdd(data)),
+		setTestdataBymyclick(data) {
+			dispatch(setTestdataAdd(data));
+		},
+		setAxiosdata(data) {
+			dispatch(setAxiosdata(data));
+		},
 	};
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Test02);

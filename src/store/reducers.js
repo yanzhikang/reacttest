@@ -31,9 +31,20 @@ function testdata(state = defaultState.testdata, action) {
             return state;
     }
 }
+function axiosTest(state = defaultState.axiosTest, action) {
+    switch (action.type) {
+        case "SET_AXIOSTEST":
+            return action.data;
+        case "SET_TEST_DATA_Reduce":
+            return state;
+        default:
+            return state;
+    }
+}
 
 export default combineReducers({
     pageTitle,
     infoList,
-    testdata
+    testdata,
+    axiosTest
 });

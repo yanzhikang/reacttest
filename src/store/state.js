@@ -16,5 +16,6 @@ export default {
             data: "123"
         }
     ],
-    testdata: 0
+    testdata: 0,
+    axiosTest:'',
 };
