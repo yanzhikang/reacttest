@@ -7,6 +7,7 @@ export function setPageTitle(data) {
     };
 }
 
+
 export function setInfoList(data) {
     return (dispatch, getState) => {
         // 使用fetch实现异步请求
