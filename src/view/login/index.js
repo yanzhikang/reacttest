@@ -4,6 +4,7 @@ import { Form, Input, Button } from "antd";
 
 // connect方法的作用：将额外的props传递给组件，并返回新的组件，组件在该过程中不会受到影响
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom';
 
 class LoginForm extends React.Component {
     constructor(props) {
@@ -43,6 +44,8 @@ class LoginForm extends React.Component {
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 console.log("Received values of form: ", values);
+                console.log(this.props.history)
+                this.props.history.push('/home');
             }
         });
     };
@@ -84,8 +87,8 @@ class LoginForm extends React.Component {
         );
     }
 }
-
-const Lf = Form.create({ name: "login" })(LoginForm);
+const LoginForm2 = withRouter(LoginForm)
+const Lf = Form.create({ name: "login" })(LoginForm2);
 
 class Login extends React.Component {
     render() {
