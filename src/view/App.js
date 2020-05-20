@@ -17,8 +17,6 @@ function App() {
                     <Link to="/inbox">Inbox</Link>
                 </li>
             </ul>
-            {/* <Login></Login> */}
-            {/* <Test></Test> */}
             <Test02></Test02>
         </div>
     );

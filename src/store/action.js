@@ -1,5 +1,6 @@
 // actions.js
 
+import axios from "axios";
 // action也是函数
 export function setPageTitle(data) {
     return (dispatch, getState) => {
@@ -36,9 +37,22 @@ export function setInfoList(data) {
 // }
 
 export function setTestdataAdd(data) {
-    return { type: "SET_TEST_DATA_Add", data: data }
+    return { type: "SET_TEST_DATA_Add", data: data };
 }
 
 export function setTestdataReduce(data) {
-    return { type: "SET_TEST_DATA_Reduce", data: data }
+    return { type: "SET_TEST_DATA_Reduce", data: data };
+}
+
+export function getUsersInfo(data) {
+    return (dispatch, getState) => {
+        // axios.get("http://localhost:3000/users").then(res => {
+        //     dispatch({ type: "SET_USERS_INFO", data: res.data });
+        // });
+        axios.get("http://localhost:3000/users",{
+            params:data
+        }).then(res => {
+            dispatch({ type: "SET_USERS_INFO", data: res.data });
+        });
+    };
 }

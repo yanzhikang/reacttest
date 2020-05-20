@@ -4,12 +4,19 @@ import {
     setPageTitle,
     setInfoList,
     setTestdataAdd,
-    setTestdataReduce
+    setTestdataReduce,
+    getUsersInfo
 } from "../../store/action";
 
 class Test02 extends Component {
     constructor(props) {
         super(props);
+    }
+    componentDidMount(){
+        var data = {
+            id:1
+        }
+        this.props.getUsersInfo(data)
     }
     reduce = () => {
         console.log("reduce");
@@ -19,13 +26,22 @@ class Test02 extends Component {
         console.log("add");
         this.props.setTestdataAdd();
     };
+    getUsersInfo=()=>{
+        var data = {
+            id:2
+        }
+        this.props.getUsersInfo(data)
+    }
     render() {
-        let { pageTitle, infoList, testdata } = this.props;
+        let { pageTitle, infoList, testdata,usersInfo} = this.props;
         return (
             <div>
                 <button onClick={this.reduce}>-1</button>
                 {testdata}
                 <button onClick={this.add}>+1</button>
+                <br/>
+                <p>{usersInfo}</p>
+                <button onClick={this.getUsersInfo}>get</button>
             </div>
         );
     }
@@ -34,7 +50,8 @@ const mapStateToProps = state => {
     return {
         pageTitle: state.pageTitle,
         infoList: state.infoList,
-        testdata: state.testdata
+        testdata: state.testdata,
+        usersInfo:state.usersInfo
     };
 };
 
@@ -55,7 +72,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
             dispatch(setInfoList(data));
         },
         setTestdataReduce: data => dispatch(setTestdataReduce(data)),
-        setTestdataAdd: data => dispatch(setTestdataAdd(data))
+        setTestdataAdd: data => dispatch(setTestdataAdd(data)),
+        getUsersInfo:data=>dispatch(getUsersInfo(data))
     };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Test02);

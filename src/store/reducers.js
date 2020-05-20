@@ -35,10 +35,18 @@ function testdata(state = defaultState.testdata, action) {
             return state;
     }
 }
-
+function usersInfo(state = defaultState.usersInfo, action) {
+    switch (action.type) {
+        case "SET_USERS_INFO":
+            return action.data;
+        default:
+            return state;
+    }
+}
 // 导出所有reducer
 export default combineReducers({
     pageTitle,
     infoList,
-    testdata
+    testdata,
+    usersInfo
 });

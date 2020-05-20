@@ -3,7 +3,7 @@ import App from "../view/App";
 import About from "../view/routertest/about";
 import List from "../view/routertest/list";
 import Inbox from "../view/routertest/inbox";
-const routes = [
+const homeRoutes = [
     { path: "/home/app", component: App },
     {
         path: "/home/about",
@@ -19,4 +19,4 @@ const routes = [
     }
 ];
 
-export default routes
+export default homeRoutes
