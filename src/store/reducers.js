@@ -31,35 +31,18 @@ function testdata(state = defaultState.testdata, action) {
             return state;
     }
 }
-<<<<<<< HEAD
 function usersInfo(state = defaultState.usersInfo, action) {
     switch (action.type) {
         case "SET_USERS_INFO":
             return action.data;
-=======
-function axiosTest(state = defaultState.axiosTest, action) {
-    switch (action.type) {
-        case "SET_AXIOSTEST":
-            return action.data;
-        case "SET_TEST_DATA_Reduce":
-            return state;
->>>>>>> 6ec921bf644924cad129a59d640efbccf7b2aad9
         default:
             return state;
     }
 }
-<<<<<<< HEAD
 // 导出所有reducer
-=======
-
->>>>>>> 6ec921bf644924cad129a59d640efbccf7b2aad9
 export default combineReducers({
     pageTitle,
     infoList,
     testdata,
-<<<<<<< HEAD
     usersInfo
-=======
-    axiosTest
->>>>>>> 6ec921bf644924cad129a59d640efbccf7b2aad9
 });
