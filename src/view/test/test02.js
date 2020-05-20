@@ -7,6 +7,7 @@ import {
     setTestdataReduce,
     getUsersInfo
 } from "../../store/action";
+import axios from "axios";
 
 class Test02 extends Component {
     constructor(props) {
